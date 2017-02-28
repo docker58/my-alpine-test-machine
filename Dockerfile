@@ -43,8 +43,8 @@ RUN buildDeps=" \
 	&& rm -rf /var/cache/apk/*
 
 # Setup config
-COPY groupinfo.txt /tmp/
-RUN set -x \
+# COPY groupinfo.txt /tmp/
+# RUN set -x \
 	&& sed -i 's/\.\/sample\.passwd/\/etc\/ocserv\/ocpasswd/' /etc/ocserv/ocserv.conf \
 	&& sed -i 's/\(max-same-clients = \)2/\110/' /etc/ocserv/ocserv.conf \
 	&& sed -i 's/\.\.\/tests/\/etc\/ocserv/' /etc/ocserv/ocserv.conf \
@@ -60,10 +60,10 @@ RUN set -x \
 
 WORKDIR /etc/ocserv
 
-COPY All /etc/ocserv/config-per-group/All
-COPY cn-no-route.txt /etc/ocserv/config-per-group/Route
+# COPY All /etc/ocserv/config-per-group/All
+# COPY cn-no-route.txt /etc/ocserv/config-per-group/Route
 
-COPY docker-entrypoint.sh /entrypoint.sh
+# COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 443
